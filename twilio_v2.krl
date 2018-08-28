@@ -4,6 +4,7 @@ ruleset twilio_v2 {
                     auth_token = ""
     provides
         send_sms
+        get_messages
   }
  
   global {
