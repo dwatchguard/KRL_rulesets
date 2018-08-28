@@ -15,7 +15,9 @@ ruleset use_twilio_v2 {
   }
   rule test_messages {
     select when test get_messages
-    
-    twilio:get_messages(event:attr("to"),event:attr("from")).klog()
+    pre {
+      messages = twilio:get_messages(event:attr("to"),event:attr("from")).klog("messages");
+    }
+        send_directive(messages)
   }
 }
