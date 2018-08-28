@@ -3,7 +3,7 @@ ruleset twilio_v2 {
     configure using account_sid = ""
                     auth_token = ""
     provides
-        send_sms
+        send_sms,
         get_messages
   }
  
