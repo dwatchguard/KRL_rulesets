@@ -15,9 +15,7 @@ ruleset use_twilio_v2 {
   }
   rule test_messages {
     select when test get_messages
-    messages = twilio:get_messagesevent:attr("to"),
-                    event:attr("from")
-                   )
-    log(messages)
+    
+    twilio:get_messages(event:attr("to"),event:attr("from")).klog()
   }
 }
