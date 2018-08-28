@@ -19,7 +19,7 @@ ruleset twilio_v2 {
       base_url = <<https://#{account_sid}:#{auth_token}@api.twilio.com/2010-04-01/Accounts/#{account_sid}/>>
        http:get(base_url + "Messages.json", form = {
                 "From":from,
-                "To":to,
+                "To":to
             })
     }
   }
