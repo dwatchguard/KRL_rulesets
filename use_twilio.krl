@@ -16,10 +16,9 @@ ruleset use_twilio {
   rule test_messages {
     select when test get_messages
     pre {
-    response = twilio:messages(event:attr("to"),event:attr("from"));
+    response = twilio:messages(event:attr("to"), event:attr("from"), event:attr("page_size"), event:attr("page_num"), event:attr("page_token"));
     json_response = response{"content"}.decode();
-      messages = twilio:messages(event:attr("to"),event:attr("from")).klog("messages");
     }
-        send_directive("Messages", json_response)
+        send_directive("Messages test", json_response)
   }
 }
