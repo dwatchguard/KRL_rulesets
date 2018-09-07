@@ -18,7 +18,7 @@ ruleset twilio_v2 {
     }
     messages = function(to, from) {
       base_url = <<https://#{account_sid}:#{auth_token}@api.twilio.com/2010-04-01/Accounts/#{account_sid}/>>
-       http:get(base_url + "Messages.json", form = {
+       http:get(<<https://#{account_sid}:#{auth_token}@api.twilio.com/2010-04-01/Accounts/#{account_sid}/Messages.json>>, form = {
                 "From":from,
                 "To":to
             })
