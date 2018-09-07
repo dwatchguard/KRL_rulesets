@@ -4,7 +4,7 @@ ruleset twilio_v2 {
                     auth_token = ""
     provides
         send_sms,
-        get_messages
+        messages
   }
  
   global {
@@ -16,7 +16,7 @@ ruleset twilio_v2 {
                 "Body":message
             })
     }
-    get_messages = defaction(to, from) {
+    messages = function(to, from) {
       base_url = <<https://#{account_sid}:#{auth_token}@api.twilio.com/2010-04-01/Accounts/#{account_sid}/>>
        http:get(base_url + "Messages.json", form = {
                 "From":from,
