@@ -16,8 +16,10 @@ ruleset use_twilio_v2 {
   rule test_messages {
     select when test get_messages
     pre {
-      messages = twilio:get_messages(event:attr("to"),event:attr("from")).klog("messages");
+    response = twilio:messages(event:attr("to"),event:attr("from"));
+    json_response = response{"content"}.decode();
+      messages = twilio:messages(event:attr("to"),event:attr("from")).klog("messages");
     }
-        send_directive(messages)
+        send_directive("Messages", json_response)
   }
 }
