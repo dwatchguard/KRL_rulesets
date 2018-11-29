@@ -4,6 +4,6 @@ ruleset wovyn_base {
   
   rule process_heartbeat {
     select when wovyn heartbeat
-    send_directive("there was a heartbeat")
+    send_directive("directive", {"body":"my text response"});
   }
 }
