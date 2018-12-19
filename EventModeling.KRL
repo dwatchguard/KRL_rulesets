@@ -32,5 +32,6 @@ ruleset EventModeling{
       select when web pageview url re#(www.google.com|www.Yahoo!.com|www.MSNBC.com|www.CNN.com|www.KSL.com)# setting (site)
       after web pageview url re#(www.google.com|www.Yahoo!.com|www.MSNBC.com|www.CNN.com|www.KSL.com)# setting (site2)
       and site != site2
+      
     }
 }
